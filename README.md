@@ -2,4 +2,4 @@
 
 ## This is a demo of the ERD as it is currently!
 
-![Simple data relation of my app](/../<main>/Assets/erdv1.png?raw=true "ERD")
+![Simple data relation of my app](/Assets/erdv1.png?raw=true "ERD")
