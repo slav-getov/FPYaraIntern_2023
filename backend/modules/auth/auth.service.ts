@@ -1,5 +1,6 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { ClientsService } from 'modules/clients/clients.service';
+import { comparePasswords } from './utils/bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -13,15 +14,21 @@ export class AuthService {
   }
   async validateClient(username: string, password: string) {
     console.log('inside validate client');
-    const demoUserFound =
-      await this.clientsService.findClientByUsernameAndPassword(
-        username,
-        password,
-      );
+    const demoUserFound = await this.clientsService.findClientByUsername(
+      username,
+    );
+    console.log(demoUserFound);
     if (demoUserFound) {
-      console.log(demoUserFound);
+      const matched = comparePasswords(password, demoUserFound.password);
+      if (matched) {
+        console.log('validated');
+        return demoUserFound;
+      } else {
+        console.log('passwords do not match');
+      }
     } else {
-      console.log('No such user');
+      console.log('pass validation failed');
+      return null;
     }
   }
 }
