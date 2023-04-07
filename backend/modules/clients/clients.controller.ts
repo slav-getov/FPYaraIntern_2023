@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common/decorators';
+import { Controller, Get, Post, Body } from '@nestjs/common/decorators';
 import { ClientsService } from './clients.service';
 import { HttpException, HttpStatus } from '@nestjs/common';
+import { ClientDto } from 'dtos/client.dto';
 @Controller('clients')
 export class ClientsController {
   constructor(private clientService: ClientsService) {}
@@ -11,5 +12,9 @@ export class ClientsController {
     else {
       throw new HttpException('No clients found', HttpStatus.NOT_FOUND);
     }
+  }
+  @Post('create')
+  createClient(@Body() client: ClientDto) {
+    return this.clientService.createClient(client);
   }
 }
