@@ -3,7 +3,7 @@ import {
   IsNotEmpty,
   MinLength,
   IsEmail,
-  IsOptional,
+  IsStrongPassword,
 } from 'class-validator';
 
 export class ClientDto {
@@ -24,6 +24,7 @@ export class ClientDto {
   username: string;
 
   @IsNotEmpty()
+  @IsStrongPassword()
   password: string;
 
   @IsNotEmpty()
