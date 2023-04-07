@@ -12,6 +12,7 @@ export class AuthService {
     }
   }
   async validateClient(username: string, password: string) {
+    console.log('inside validate client');
     const demoUserFound =
       await this.clientsService.findClientByUsernameAndPassword(
         username,

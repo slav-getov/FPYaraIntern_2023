@@ -1,5 +1,13 @@
-import { ParseIntPipe } from '@nestjs/common';
-import { Controller, Get, Post, Param, Body } from '@nestjs/common/decorators';
+import { ParseIntPipe, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Param,
+  Body,
+  Request,
+} from '@nestjs/common/decorators';
+import { AuthGuard } from '@nestjs/passport/dist/auth.guard';
 import { SignUpDto } from 'dtos/signup.dto';
 import { AuthService } from './auth.service';
 
@@ -16,4 +24,7 @@ export class AuthController {
     //console.log(res.error);
     console.log(body);
   }
+  @UseGuards(AuthGuard('local'))
+  @Post('login')
+  async login(@Request() req) {}
 }

@@ -8,6 +8,8 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     super();
   }
   async validate(username: string, password: string): Promise<any> {
+    console.log('in local strategy');
+    console.log(username, password);
     this.authService.validateClient(username, password);
   }
 }
