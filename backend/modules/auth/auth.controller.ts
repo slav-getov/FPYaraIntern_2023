@@ -1,4 +1,4 @@
-import { ParseIntPipe, UseGuards } from '@nestjs/common';
+import { ParseIntPipe, Session, UseGuards } from '@nestjs/common';
 import {
   Controller,
   Get,
@@ -27,4 +27,9 @@ export class AuthController {
   @UseGuards(AuthGuard('local'))
   @Post('login')
   async login(@Request() req) {}
+
+  @Get('')
+  async getAuthStatus(@Session() session: Record<string, any>) {
+    console.log(session);
+  }
 }

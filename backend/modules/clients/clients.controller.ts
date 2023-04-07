@@ -5,9 +5,9 @@ import { ClientDto } from 'dtos/client.dto';
 @Controller('clients')
 export class ClientsController {
   constructor(private clientService: ClientsService) {}
-  @Get()
+  @Get('all')
   getAllClients() {
-    const result = this.clientService.getAllClients();
+    const result = this.clientService.findAllClients();
     if (result) return result;
     else {
       throw new HttpException('No clients found', HttpStatus.NOT_FOUND);

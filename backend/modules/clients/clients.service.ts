@@ -11,8 +11,8 @@ export class ClientsService {
     @InjectRepository(Client)
     private readonly clientRepository: Repository<Client>,
   ) {}
-  getAllClients() {
-    return null;
+  findAllClients() {
+    return this.clientRepository.find();
   }
   createClient(client: ClientDto) {
     const password = hashPassword(client.password);
