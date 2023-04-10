@@ -3,3 +3,4 @@ Notes:
 
 
 Questions:
+I get super confused when it comes to which method to await and whether we should do that at all

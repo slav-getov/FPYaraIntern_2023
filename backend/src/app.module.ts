@@ -5,10 +5,15 @@ import { AppService } from './app.service';
 import { ClientsModule } from 'modules/clients/clients.module';
 import { AuthModule } from 'modules/auth/auth.module';
 import { Client } from 'typeorm/Client';
+import { ManagementModule } from 'modules/management/management.module';
+import { ConfigModule } from '@nestjs/config';
+
 @Module({
   imports: [
     ClientsModule,
+    ConfigModule.forRoot(),
     AuthModule,
+    ManagementModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       database: 'demofp',

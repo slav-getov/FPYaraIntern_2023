@@ -1,28 +1,26 @@
-import { ParseIntPipe, Session, UseGuards } from '@nestjs/common';
+import { Session, UseGuards } from '@nestjs/common';
 import {
   Controller,
   Get,
   Post,
-  Param,
   Body,
   Request,
 } from '@nestjs/common/decorators';
 import { AuthGuard } from '@nestjs/passport/dist/auth.guard';
-import { SignUpDto } from 'dtos/signup.dto';
+import { ClientDto } from 'dtos/client.dto';
+
 import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
-  @Get('signup/:id')
-  getSignUp(@Param('id', ParseIntPipe) id: number) {
-    console.log(id);
-    return this.authService.getSignUp();
-  }
-  @Post('signup')
-  postSignUp(@Body() body: SignUpDto) {
-    //console.log(res.error);
+
+  @Post('register')
+  async signUp(@Body() body: ClientDto) {
     console.log(body);
+    console.log('in register in auth controller');
+    const result = await this.authService.registerClient(body);
+    console.log(result);
   }
   @UseGuards(AuthGuard('local'))
   @Post('login')
@@ -30,6 +28,8 @@ export class AuthController {
 
   @Get('')
   async getAuthStatus(@Session() session: Record<string, any>) {
+    //here we can access the session id and other things related to the session
     console.log(session);
+    console.log(session.id);
   }
 }

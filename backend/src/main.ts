@@ -3,6 +3,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import * as session from 'express-session';
 import * as passport from 'passport';
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
@@ -10,12 +11,12 @@ async function bootstrap() {
     session({
       secret: 'somedeepsecret',
       resave: false,
-      saveUninitialized: false,
+      saveUninitialized: true,
       cookie: {
-        maxAge: 70000,
+        maxAge: 80000,
       },
     }),
   );
-  await app.listen(3000);
+  await app.listen(4000);
 }
 bootstrap();
