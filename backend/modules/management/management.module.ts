@@ -5,8 +5,15 @@ import { ManagementController } from './management.controller';
 import { AuthenticationService } from './authentication.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Client } from 'typeorm/Client';
+import { JwtModule } from '@nestjs/jwt';
+import jwtConfig from './config/jwt.config';
+import { ConfigModule } from '@nestjs/config';
 @Module({
-  imports: [TypeOrmModule.forFeature([Client])],
+  imports: [
+    TypeOrmModule.forFeature([Client]),
+    JwtModule.registerAsync(jwtConfig.asProvider()),
+    ConfigModule.forFeature(jwtConfig),
+  ],
   providers: [
     {
       provide: HashingService,
