@@ -30,6 +30,6 @@ export class AuthController {
   async getAuthStatus(@Session() session: Record<string, any>) {
     //here we can access the session id and other things related to the session
     console.log(session);
-    console.log(session.id);
+    console.log(session.id, 'this is the session id');
   }
 }
