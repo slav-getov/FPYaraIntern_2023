@@ -1,6 +1,6 @@
 Notes:
-
-
+1. I get super confused when it comes to which method to await and whether we should do that at all
+2. Found ts kinda difficult without prior utilization and explanations.
+3. Most of the 'extending guards' methodology in the documentation felt like magic methods and just copying stuff without explicitly knowing what is what
 
 Questions:
-I get super confused when it comes to which method to await and whether we should do that at all
