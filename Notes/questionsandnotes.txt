@@ -4,5 +4,6 @@ Notes:
 3. Most of the 'extending guards' methodology in the documentation felt like magic methods and just copying stuff without explicitly knowing what is what
 4. It appears we can compose guards from other guards. How exactly this works is unclear to me. It is a good thing the docs showed examples otherwise I would not have managed to continue
 5. I did not have time to properly host the api. This now means that I would have bypass CORS policy in some way which I know is not ok for production. I wanted to stress this. I also know to not set headers specifically for each and every request to allow cors because this will just allow GET and OPTIONS which will later make even more issues. Not to talk about POST,PUT etc etc
+6. Some more examples on how to use store in conjuction with RTK query would be greatly appreciated. I am talking from scratch.
 
 Questions:

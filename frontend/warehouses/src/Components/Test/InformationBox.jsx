@@ -4,7 +4,7 @@ import { useFetchClientsQuery } from "../../store/reduxStore";
 const InformationBox = ({ information }) => {
   const currState = useSelector((state) => state.auth);
   console.log(currState);
-  const { data, error, isLoading, isFetching } = useFetchClientsQuery();
+  //const { data, error, isLoading, isFetching } = useFetchClientsQuery();
   return (
     <div>
       <p>hello</p>
