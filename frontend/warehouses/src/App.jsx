@@ -1,7 +1,8 @@
+import Navigation from "./Components/Navigation";
 function App() {
   return (
     <div>
-      <p className="text-3xl font-inter underline">Hello react+vite</p>
+      <Navigation />
     </div>
   );
 }
