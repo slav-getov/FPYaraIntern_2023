@@ -3,7 +3,7 @@ import ActionableButton from "../Shared/ActionableButton";
 const RegistrationForm = () => {
   return (
     <form>
-      <fieldset>
+      <fieldset className="flex flex-col">
         <legend>Register here and test Epicenter today!</legend>
         <label>
           Enter first name
@@ -33,7 +33,7 @@ const RegistrationForm = () => {
           Enter your phone number
           <input type="text" name="phone" />
         </label>
-        <ActionableButton title="Register" />
+        <ActionableButton title="Register" className="self-start" />
       </fieldset>
     </form>
   );

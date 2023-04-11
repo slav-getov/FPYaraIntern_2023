@@ -4,7 +4,9 @@ function App() {
   return (
     <div className="font-inter">
       <Navigation />
-      <Outlet />
+      <main className="flex justify-center">
+        <Outlet />
+      </main>
     </div>
   );
 }
