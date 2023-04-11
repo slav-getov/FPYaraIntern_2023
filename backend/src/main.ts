@@ -17,6 +17,8 @@ async function bootstrap() {
       },
     }),
   );
+  //this is the cors 'workaround' which I had to do. This is references in #5 in Notes/questionsandnotes
+  app.enableCors();
   await app.listen(4000);
 }
 bootstrap();

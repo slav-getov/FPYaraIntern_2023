@@ -7,6 +7,9 @@ import {
 import App from "./App";
 import "./index.css";
 import RegistrationForm from "./Components/Forms/RegistrationForm";
+import InformationBox from "./Components/Test/InformationBox";
+import { Provider } from "react-redux";
+import { store } from "./store/reduxStore";
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -14,6 +17,7 @@ const router = createBrowserRouter([
       { path: "/", element: <p>Start</p> },
       { path: "/registration", element: <RegistrationForm /> },
       { path: "/demonstration", element: <p>Hey there demo</p> },
+      { path: "/fetchtest", element: <InformationBox /> },
       // {
       //   path: "/watchlist",
       //   element: <Watchlist />,
@@ -24,6 +28,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Router router={router} />
+    <Provider store={store}>
+      <Router router={router} />
+    </Provider>
   </React.StrictMode>
 );

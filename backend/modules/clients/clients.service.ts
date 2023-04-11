@@ -22,7 +22,7 @@ export class ClientsService {
     console.log(newClient);
     return this.clientRepository.save(newClient);
   }
-  findClientByUsername(username: string) {
-    return this.clientRepository.findOneBy({ username });
+  async findClientByUsername(username: string) {
+    return await this.clientRepository.findOneBy({ username });
   }
 }
