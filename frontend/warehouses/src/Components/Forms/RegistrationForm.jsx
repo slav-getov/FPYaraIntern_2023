@@ -26,13 +26,16 @@ const RegistrationForm = () => {
   const [signInClient, result] = useSignInClientMutation();
   console.log(result);
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="px-2 py-3 rounded-md shadow-lg"
+    >
       <fieldset className="flex flex-col">
         <legend className="p-3 break-normal md:text-xl lg:text-2xl">
           Register here and test Epicenter{" "}
           <span className="text-red-500">today!</span>
         </legend>
-        <label className="p-1 md:p-3">
+        <label className="p-1 md:self-center md:p-3">
           Enter first name
           <input
             type="text"
@@ -41,7 +44,7 @@ const RegistrationForm = () => {
             {...register("first_name")}
           />
         </label>
-        <label className="p-1 md:p-3">
+        <label className="p-1 md:self-center md:p-3">
           Enter last name
           <input
             type="text"
@@ -50,7 +53,7 @@ const RegistrationForm = () => {
             {...register("last_name")}
           />
         </label>
-        <label className="p-1 md:p-3">
+        <label className="p-1 md:self-center md:p-3">
           Enter your email
           <input
             type="text"
@@ -59,7 +62,7 @@ const RegistrationForm = () => {
             {...register("email")}
           />
         </label>
-        <label className="p-1 md:p-3">
+        <label className="p-1 md:self-center md:p-3">
           Enter username
           <input
             type="text"
@@ -68,7 +71,7 @@ const RegistrationForm = () => {
             {...register("username")}
           />
         </label>
-        <label className="p-1 md:p-3">
+        <label className="p-1 md:self-center md:p-3">
           Enter your password
           <input
             type="password"
@@ -77,7 +80,7 @@ const RegistrationForm = () => {
             {...register("password")}
           />
         </label>
-        <label className="p-1 md:p-3">
+        <label className="p-1 md:self-center md:p-3">
           Repeat your password
           <input
             type="password"
@@ -86,7 +89,7 @@ const RegistrationForm = () => {
             {...register("password_repeat")}
           />
         </label>
-        <label className="p-1 md:p-3">
+        <label className="p-1 md:self-center md:p-3">
           Enter your phone
           <input
             type="text"
