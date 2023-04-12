@@ -27,7 +27,7 @@ const clientsApi = createApi({
             body: {
               first_name: client.first_name,
               last_name: client.last_name,
-              email: client.email,
+              email: client?.email,
               username: client.username,
               password: client.password,
               phone: client.phone,

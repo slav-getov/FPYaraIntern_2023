@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { clientsApi } from "../apis/client-api/clientApi";
-
+import { current } from "@reduxjs/toolkit";
 const slice = createSlice({
   name: "auth",
   initialState: { user: null, token: null },
@@ -9,9 +9,7 @@ const slice = createSlice({
     builder.addMatcher(
       clientsApi.endpoints.signInClient.matchFulfilled,
       (state, { payload }) => {
-        console.log(payload.accessToken, "this is a payload");
-        console.log(state, "this is the state");
-        state.auth.token = payload.accessToken;
+        state.token = payload.accessToken;
       }
     );
     //   .addMatcher(
