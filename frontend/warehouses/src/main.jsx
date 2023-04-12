@@ -7,6 +7,7 @@ import {
 import App from "./App";
 import "./index.css";
 import RegistrationForm from "./Components/Forms/RegistrationForm";
+import LoginForm from "./Components/Forms/LoginForm";
 import InformationBox from "./Components/Test/InformationBox";
 import { Provider } from "react-redux";
 import { store } from "./store/reduxStore";
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <p>Start</p> },
       { path: "/registration", element: <RegistrationForm /> },
+      { path: "/login", element: <LoginForm /> },
       { path: "/demonstration", element: <p>Hey there demo</p> },
       { path: "/fetchtest", element: <InformationBox /> },
       // {

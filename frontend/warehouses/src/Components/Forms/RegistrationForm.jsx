@@ -31,9 +31,15 @@ const RegistrationForm = () => {
       className="px-2 py-3 rounded-md shadow-lg"
     >
       <fieldset className="flex flex-col">
-        <legend className="p-3 break-normal md:text-xl lg:text-2xl">
-          Register here and test Epicenter{" "}
-          <span className="text-red-500">today!</span>
+        <legend className="p-3 break-normal">
+          <p className="text-xl md:text-2xl">Create your account</p>
+
+          <p className="font-light text-gray-500">
+            <span className="hidden display:inline md:inline">
+              Start your journey now. Already have an account?
+            </span>
+            <span className="p-2 text-xl text-blue-600">Login here.</span>
+          </p>
         </legend>
         <label className="p-1 md:self-center md:p-3">
           Enter first name
