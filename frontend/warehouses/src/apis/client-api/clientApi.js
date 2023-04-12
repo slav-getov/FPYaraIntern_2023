@@ -7,15 +7,43 @@ const clientsApi = createApi({
   }),
   endpoints(builder) {
     return {
-      fetchClients: builder.query({
-        query: () => {
-          //the anonymous function had a client arg previously
+      //   fetchClients: builder.query({
+      //     query: () => {
+      //       //the anonymous function had a client arg previously
+      //       return {
+      //         url: "/clients/all",
+      //         // params: {
+      //         //   clientId: client.id,
+      //         // },
+      //         method: "GET",
+      //       };
+      //     },
+      //   }),
+      registerClient: builder.mutation({
+        query: (client) => {
           return {
-            url: "/clients/all",
-            // params: {
-            //   clientId: client.id,
-            // },
-            method: "GET",
+            url: "authentication/sign-up",
+            method: "POST",
+            body: {
+              first_name: client.first_name,
+              last_name: client.last_name,
+              email: client.email,
+              username: client.username,
+              password: client.password,
+              phone: client.phone,
+            },
+          };
+        },
+      }),
+      signInClient: builder.mutation({
+        query: (client) => {
+          return {
+            url: "authentication/sign-in",
+            method: "POST",
+            body: {
+              email: client.email,
+              password: client.password,
+            },
           };
         },
       }),
@@ -23,5 +51,9 @@ const clientsApi = createApi({
   },
 });
 
-export const { useFetchClientsQuery } = clientsApi;
+export const {
+  useFetchClientsQuery,
+  useRegisterClientMutation,
+  useSignInClientMutation,
+} = clientsApi;
 export { clientsApi };
