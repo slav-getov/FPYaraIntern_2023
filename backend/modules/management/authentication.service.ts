@@ -35,6 +35,7 @@ export class AuthenticationService {
     }
   }
   async signIn(signInDto: SignInDto) {
+    console.log(signInDto.email, 'this is from the service');
     const client = await this.clientRepository.findOneBy({
       email: signInDto.email,
     });

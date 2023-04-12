@@ -9,8 +9,9 @@ const slice = createSlice({
     builder.addMatcher(
       clientsApi.endpoints.signInClient.matchFulfilled,
       (state, { payload }) => {
-        console.log(payload);
-        state.auth.token = payload.token;
+        console.log(payload.accessToken, "this is a payload");
+        console.log(state, "this is the state");
+        state.auth.token = payload.accessToken;
       }
     );
     //   .addMatcher(
