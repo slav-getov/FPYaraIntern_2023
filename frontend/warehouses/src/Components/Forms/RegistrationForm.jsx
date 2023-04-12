@@ -2,6 +2,7 @@ import React from "react";
 import ActionableButton from "../Shared/ActionableButton";
 //try to use LabelWithInput later on if finished!!!
 import LabelWithInput from "./LabelWithInput";
+import { NavLink } from "react-router-dom";
 import {
   useRegisterClientMutation,
   useSignInClientMutation,
@@ -38,7 +39,9 @@ const RegistrationForm = () => {
             <span className="hidden display:inline md:inline">
               Start your journey now. Already have an account?
             </span>
-            <span className="p-2 text-xl text-blue-600">Login here.</span>
+            <span className="p-2 text-xl text-blue-600">
+              <NavLink to="/login">Login here.</NavLink>
+            </span>
           </p>
         </legend>
         <label className="p-1 md:self-center md:p-3">
