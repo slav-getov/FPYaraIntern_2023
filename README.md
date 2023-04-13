@@ -6,7 +6,7 @@ This is my final project for YARA BG. This project will use **POSTGRESQL**, **NE
 
 This is how the entity relations look
 
-![Simple data relation of my app](/Assets/erdv1.png?raw=true "ERD")
+![Simple data relation of my app](/Assets/erdv2.png?raw=true "ERD")
 
 ### Instructions for running the project
 
