@@ -25,7 +25,15 @@ const RegistrationForm = () => {
   //this what we use for login
   //const [signInClient, result] = useSignInClientMutation();
   const onSubmit = (data) => {
-    const values = { email: data.email, password: data.password };
+    // const values = { email: data.email, password: data.password };
+    const values = {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      username: data.username,
+      password: data.password,
+      phone: data.phone,
+    };
     dispatch(setCurrentUser(data.email));
     registerClient(values);
   };
@@ -47,7 +55,7 @@ const RegistrationForm = () => {
             </span>
           </p>
         </legend>
-        <label className="p-1 md:self-center md:p-3">
+        <label className="p-1 md:self-left md:p-3">
           Enter first name
           <input
             type="text"
@@ -56,7 +64,7 @@ const RegistrationForm = () => {
             {...register("first_name")}
           />
         </label>
-        <label className="p-1 md:self-center md:p-3">
+        <label className="p-1 md:self-left md:p-3">
           Enter last name
           <input
             type="text"
@@ -65,7 +73,7 @@ const RegistrationForm = () => {
             {...register("last_name")}
           />
         </label>
-        <label className="p-1 md:self-center md:p-3">
+        <label className="p-1 md:self-left md:p-3">
           Enter your email
           <input
             type="text"
@@ -74,7 +82,7 @@ const RegistrationForm = () => {
             {...register("email")}
           />
         </label>
-        <label className="p-1 md:self-center md:p-3">
+        <label className="p-1 md:self-left md:p-3">
           Enter username
           <input
             type="text"
@@ -83,7 +91,7 @@ const RegistrationForm = () => {
             {...register("username")}
           />
         </label>
-        <label className="p-1 md:self-center md:p-3">
+        <label className="p-1 md:self-left md:p-3">
           Enter your password
           <input
             type="password"
@@ -92,7 +100,7 @@ const RegistrationForm = () => {
             {...register("password")}
           />
         </label>
-        <label className="p-1 md:self-center md:p-3">
+        <label className="p-1 md:self-left md:p-3">
           Repeat your password
           <input
             type="password"
@@ -101,7 +109,7 @@ const RegistrationForm = () => {
             {...register("password_repeat")}
           />
         </label>
-        <label className="p-1 md:self-center md:p-3">
+        <label className="p-1 md:self-left md:p-3">
           Enter your phone
           <input
             type="text"

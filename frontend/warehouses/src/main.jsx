@@ -9,6 +9,7 @@ import "./index.css";
 import RegistrationForm from "./Components/Forms/RegistrationForm";
 import LoginForm from "./Components/Forms/LoginForm";
 import InformationBox from "./Components/Test/InformationBox";
+import CommandPanel from "./Components/CommandPanel/CommandPanel";
 import { Provider } from "react-redux";
 import { store } from "./store/reduxStore";
 const router = createBrowserRouter([
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: "/login", element: <LoginForm /> },
       { path: "/demonstration", element: <p>Hey there demo</p> },
       { path: "/fetchtest", element: <InformationBox /> },
+      { path: "/profile", element: <CommandPanel /> },
     ],
   },
 ]);

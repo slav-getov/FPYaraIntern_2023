@@ -1,13 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { clientsApi } from "../apis/client-api/clientApi";
+
 import { current } from "@reduxjs/toolkit";
+//use this only for debugging!!!
+const initialState = { user: null, token: null };
 const slice = createSlice({
   name: "auth",
-  initialState: { user: null, token: null },
+  initialState,
   reducers: {
     setCurrentUser: (state, action) => {
       state.user = action.payload;
     },
+    nullCurrentUser: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -22,10 +26,10 @@ const slice = createSlice({
         clientsApi.endpoints.registerClient.matchFulfilled,
         (state, { payload }) => {
           //look at dev tools
-          console.log(state, payload);
+          console.log(current(state), payload);
         }
       );
   },
 });
-export const { setCurrentUser } = slice.actions;
+export const { setCurrentUser, nullCurrentUser } = slice.actions;
 export default slice.reducer;
