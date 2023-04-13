@@ -3,10 +3,12 @@ import ActionableButton from "../Shared/ActionableButton";
 //try to use LabelWithInput later on if finished!!!
 import LabelWithInput from "./LabelWithInput";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import {
   useRegisterClientMutation,
   useSignInClientMutation,
 } from "../../apis/client-api/clientApi";
+import { setCurrentUser } from "../../slices/authSlice";
 import { useForm } from "react-hook-form";
 const RegistrationForm = () => {
   const {
@@ -15,21 +17,22 @@ const RegistrationForm = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-    const values = { email: data.email, password: data.password };
-    console.log(values);
-    signInClient(values);
-    console.log(result);
-  };
+  const dispatch = useDispatch();
+
   //for now try to sing in in this form not register
-  // const [registerClient, results] = useRegisterClientMutation();
-  const [signInClient, result] = useSignInClientMutation();
-  console.log(result);
+  const [registerClient, results] = useRegisterClientMutation();
+
+  //this what we use for login
+  //const [signInClient, result] = useSignInClientMutation();
+  const onSubmit = (data) => {
+    const values = { email: data.email, password: data.password };
+    dispatch(setCurrentUser(data.email));
+    registerClient(values);
+  };
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="px-2 py-3 rounded-md shadow-lg"
+      className="px-2 py-3 mb-5 rounded-lg shadow-lg"
     >
       <fieldset className="flex flex-col">
         <legend className="p-3 break-normal">

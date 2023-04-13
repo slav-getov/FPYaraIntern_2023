@@ -10,7 +10,10 @@ const Navigation = () => {
       <ul className="flex flex-col basis-3/4 md:flex-row md:justify-around lg:justify-between">
         <ListItem value="Register" className="p-1 md:p-5" />
         <NavLink to="/fetchtest">
-          <ListItem value="See demonstration" className="p-1 md:p-5" />
+          <ListItem
+            value="See demonstration"
+            className="p-1 rounded-md md:p-5 hover:shadow-lg"
+          />
         </NavLink>
       </ul>
       {!user ? (

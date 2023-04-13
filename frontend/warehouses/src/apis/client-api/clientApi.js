@@ -7,18 +7,18 @@ const clientsApi = createApi({
   }),
   endpoints(builder) {
     return {
-      //   fetchClients: builder.query({
-      //     query: () => {
-      //       //the anonymous function had a client arg previously
-      //       return {
-      //         url: "/clients/all",
-      //         // params: {
-      //         //   clientId: client.id,
-      //         // },
-      //         method: "GET",
-      //       };
-      //     },
-      //   }),
+      fetchClients: builder.query({
+        query: () => {
+          //the anonymous function had a client arg previously
+          return {
+            url: "/clients/all",
+            // params: {
+            //   clientId: client.id,
+            // },
+            method: "GET",
+          };
+        },
+      }),
       registerClient: builder.mutation({
         query: (client) => {
           return {

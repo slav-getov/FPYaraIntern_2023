@@ -25,4 +25,7 @@ export class ClientsService {
   async findClientByUsername(username: string) {
     return await this.clientRepository.findOneBy({ username });
   }
+  async findClientByEmail(email: string) {
+    return await this.clientRepository.findOneBy({ email });
+  }
 }

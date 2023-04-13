@@ -1,5 +1,6 @@
 import Navigation from "./Components/Navigation/Navigation";
 import { Outlet } from "react-router-dom";
+import Footer from "./Components/Footer/Footer";
 function App() {
   return (
     <div className="font-inter">
@@ -7,6 +8,7 @@ function App() {
       <main className="flex justify-center">
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 }
