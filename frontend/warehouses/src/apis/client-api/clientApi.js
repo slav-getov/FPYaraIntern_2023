@@ -12,10 +12,18 @@ const clientsApi = createApi({
           //the anonymous function had a client arg previously
           return {
             url: "/clients/all",
+
             // params: {
             //   clientId: client.id,
             // },
             method: "GET",
+            prepareHeaders: (headers, { getState }) => {
+              const token = getState().auth.token;
+              if (token) {
+                headers.set("authorization", `Bearer ${token}`);
+              }
+              return headers;
+            },
           };
         },
       }),

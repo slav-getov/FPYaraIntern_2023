@@ -3,7 +3,7 @@ import ActionableButton from "../Shared/ActionableButton";
 //try to use LabelWithInput later or if finished!!!
 import LabelWithInput from "./LabelWithInput";
 
-import { NavLink, redirect } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useRegisterClientMutation } from "../../apis/client-api/clientApi";
 import { setCurrentUser } from "../../slices/authSlice";
@@ -15,6 +15,7 @@ const RegistrationForm = () => {
     formState: { errors },
   } = useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 
   const [registerClient, results] = useRegisterClientMutation();
@@ -35,7 +36,7 @@ const RegistrationForm = () => {
     registerClient(values);
     if (user) {
       console.log("got em");
-      redirect("/profile");
+      navigate("/profile");
     }
   };
   return (
