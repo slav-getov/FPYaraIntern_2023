@@ -2,7 +2,7 @@ import React from "react";
 import ActionableButton from "../Shared/ActionableButton";
 //try to use LabelWithInput later or if finished!!!
 import LabelWithInput from "./LabelWithInput";
-
+import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useRegisterClientMutation } from "../../apis/client-api/clientApi";
@@ -12,7 +12,8 @@ const RegistrationForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitSuccessful },
   } = useForm();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,20 +26,24 @@ const RegistrationForm = () => {
   const onSubmit = (data) => {
     console.log(`This is before we register`, results);
     const values = {
-      first_name: data.first_name,
-      last_name: data.last_name,
+      first_name: data.firstname,
+      last_name: data.lastname,
       email: data.email,
       username: data.username,
       password: data.password,
       phone: data.phone,
     };
     dispatch(setCurrentUser(data.email));
-    registerClient(values);
-    if (user) {
-      console.log("got em");
-      navigate("/profile");
-    }
+    registerClient(values)
+      .unwrap()
+      .then((fulfilled) => {
+        //this does not work
+        navigate("/profile");
+      });
   };
+  useEffect(() => {
+    reset();
+  }, [isSubmitSuccessful, reset]);
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -63,17 +68,41 @@ const RegistrationForm = () => {
             type="text"
             name="first_name"
             className="p-1 bg-gray-300 rounded-md outline-none sm:mx-1 md:mx-2 md:m-2"
-            {...register("first_name")}
+            {...register("firstname", {
+              required: {
+                value: true,
+                message: "Please make sure form is filled",
+              },
+              pattern: {
+                value: /^([^0-9]*)$/,
+                message: "Please enter only word chars or special symbols",
+              },
+            })}
           />
+          <div className="text-red-400">
+            {errors?.firstname && errors.firstname.message}
+          </div>
         </label>
         <label className="p-1 md:self-left md:p-3">
           Enter last name
           <input
             type="text"
-            name="last_name"
+            name="lastname"
             className="p-1 bg-gray-300 rounded-md outline-none sm:mx-1 md:mx-2 md:m-2"
-            {...register("last_name")}
+            {...register("lastname", {
+              required: {
+                value: true,
+                message: "Please make sure form is filled",
+              },
+              pattern: {
+                value: /^([^0-9]*)$/,
+                message: "Please enter only word chars or special symbols",
+              },
+            })}
           />
+          <div className="text-red-400">
+            {errors?.lastname && errors.lastname.message}
+          </div>
         </label>
         <label className="p-1 md:self-left md:p-3">
           Enter your email

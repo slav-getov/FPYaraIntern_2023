@@ -25,6 +25,19 @@ export class ClientsController {
       );
     }
   }
+  c;
+  @Get(':email')
+  async getClientByEmail(@Param('email') email: string) {
+    const result = await this.clientService.findClientByEmail(email);
+
+    if (result) return result;
+    else {
+      throw new HttpException(
+        `No such client with email ${email} found`,
+        HttpStatus.NOT_FOUND,
+      );
+    }
+  }
 
   @Post('create')
   createClient(@Body() client: ClientDto) {

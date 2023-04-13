@@ -4,6 +4,13 @@ const clientsApi = createApi({
   reducerPath: "clients",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:4000",
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   endpoints(builder) {
     return {
@@ -17,13 +24,6 @@ const clientsApi = createApi({
             //   clientId: client.id,
             // },
             method: "GET",
-            prepareHeaders: (headers, { getState }) => {
-              const token = getState().auth.token;
-              if (token) {
-                headers.set("authorization", `Bearer ${token}`);
-              }
-              return headers;
-            },
           };
         },
       }),

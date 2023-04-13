@@ -1,6 +1,7 @@
 import Navigation from "./Components/Navigation/Navigation";
 import { Outlet } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
+
 function App() {
   return (
     <div className="flex flex-col h-screen font-inter">

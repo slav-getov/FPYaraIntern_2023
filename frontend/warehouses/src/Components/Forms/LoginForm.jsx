@@ -9,7 +9,10 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const values = { email: data.email, password: data.password };
+    signInClient(values);
+  };
   return (
     <div>
       <form
