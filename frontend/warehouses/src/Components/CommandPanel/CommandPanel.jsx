@@ -1,6 +1,8 @@
 import React from "react";
-
-const CommandPanel = ({ user }) => {
+import { useSelector } from "react-redux";
+const CommandPanel = () => {
+  //get the state here perhaps on redirect
+  const { user } = useSelector((state) => state.auth);
   return <section>Hello, this is the command panel {user}</section>;
 };
 

@@ -26,6 +26,7 @@ const slice = createSlice({
         clientsApi.endpoints.registerClient.matchFulfilled,
         (state, { payload }) => {
           //look at dev tools
+          console.log("this is in the second matcher");
           console.log(current(state), payload);
         }
       );

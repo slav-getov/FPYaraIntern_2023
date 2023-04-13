@@ -1,31 +1,28 @@
 import React from "react";
 import ActionableButton from "../Shared/ActionableButton";
-//try to use LabelWithInput later on if finished!!!
+//try to use LabelWithInput later or if finished!!!
 import LabelWithInput from "./LabelWithInput";
-import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import {
-  useRegisterClientMutation,
-  useSignInClientMutation,
-} from "../../apis/client-api/clientApi";
+
+import { NavLink, redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useRegisterClientMutation } from "../../apis/client-api/clientApi";
 import { setCurrentUser } from "../../slices/authSlice";
 import { useForm } from "react-hook-form";
 const RegistrationForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
 
-  //for now try to sing in in this form not register
   const [registerClient, results] = useRegisterClientMutation();
 
   //this what we use for login
   //const [signInClient, result] = useSignInClientMutation();
   const onSubmit = (data) => {
-    // const values = { email: data.email, password: data.password };
+    console.log(`This is before we register`, results);
     const values = {
       first_name: data.first_name,
       last_name: data.last_name,
@@ -36,6 +33,10 @@ const RegistrationForm = () => {
     };
     dispatch(setCurrentUser(data.email));
     registerClient(values);
+    if (user) {
+      console.log("got em");
+      redirect("/profile");
+    }
   };
   return (
     <form

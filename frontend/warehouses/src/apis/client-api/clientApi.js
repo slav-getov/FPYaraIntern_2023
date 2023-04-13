@@ -19,6 +19,17 @@ const clientsApi = createApi({
           };
         },
       }),
+      fetchSpecificClient: builder.query({
+        query: (client) => {
+          return {
+            url: "clients/:clientid",
+            params: {
+              clientId: client.id,
+            },
+            method: "GET",
+          };
+        },
+      }),
       registerClient: builder.mutation({
         query: (client) => {
           return {
@@ -53,6 +64,7 @@ const clientsApi = createApi({
 
 export const {
   useFetchClientsQuery,
+  useFetchSpecificClientQuery,
   useRegisterClientMutation,
   useSignInClientMutation,
 } = clientsApi;
