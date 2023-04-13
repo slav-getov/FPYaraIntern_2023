@@ -110,8 +110,16 @@ const RegistrationForm = () => {
             type="text"
             name="email"
             className="p-1 bg-gray-300 rounded-md outline-none sm:mx-1 md:mx-2 md:m-2"
-            {...register("email")}
+            {...register("email", {
+              required: {
+                value: true,
+                message: "Please make sure form is filled",
+              },
+            })}
           />
+          <div className="text-red-400">
+            {errors?.email && errors.email.message}
+          </div>
         </label>
         <label className="p-1 md:self-left md:p-3">
           Enter username
@@ -119,8 +127,16 @@ const RegistrationForm = () => {
             type="text"
             name="username"
             className="p-1 bg-gray-300 rounded-md outline-none sm:mx-1 md:mx-2 md:m-2"
-            {...register("username")}
+            {...register("username", {
+              required: {
+                value: true,
+                message: "Please make sure form is filled",
+              },
+            })}
           />
+          <div className="text-red-400">
+            {errors?.username && errors.username.message}
+          </div>
         </label>
         <label className="p-1 md:self-left md:p-3">
           Enter your password
